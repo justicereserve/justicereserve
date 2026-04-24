@@ -905,6 +905,13 @@
         if (res.ok) {
           form.style.display = 'none';
           document.getElementById('form-success').style.display = 'block';
+          setTimeout(() => {
+            document.getElementById('form-success').style.display = 'none';
+            form.reset();
+            form.style.display = 'block';
+            btn.textContent = 'Send enquiry →';
+            btn.disabled = false;
+          }, 4000);
         } else {
           errorDiv.style.display = 'block';
           btn.textContent = 'Send enquiry →';
