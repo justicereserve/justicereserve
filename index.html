@@ -637,8 +637,9 @@
         <div class="label fade">[ENGAGE]</div>
         <h2 class="case-heading fade">Built for Ama.<br />Built to <em>last.</em></h2>
         <p class="contact-note fade">If you recognise this reality, as a practitioner, investor, or builder, we would like to hear from you.</p>
-        <div id="form-success" style="display:none; padding: 2.5rem 0;">
-          <p style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--white); line-height:1.4;">Your message has been received.<br><em style="color:var(--gold);">We'll be in touch.</em></p>
+        <div id="form-success" style="display:none; padding: 4rem 0; text-align:left;">
+          <p style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--white); line-height:1.5; margin-bottom:3rem;">Your message has been received.<br><em style="color:var(--gold);">We'll be in touch.</em></p>
+          <button id="form-reset-btn" style="font-family:'DM Mono',monospace; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); background:none; border:none; border-bottom:1px solid var(--border); padding-bottom:2px; cursor:pointer; transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold)';" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)';">[ Send another message ]</button>
         </div>
         <form id="jr-contact-form">
           <div class="contact-form fade">
@@ -905,13 +906,13 @@
         if (res.ok) {
           form.style.display = 'none';
           document.getElementById('form-success').style.display = 'block';
-          setTimeout(() => {
+          document.getElementById('form-reset-btn').addEventListener('click', function() {
             document.getElementById('form-success').style.display = 'none';
             form.reset();
             form.style.display = 'block';
             btn.textContent = 'Send enquiry →';
             btn.disabled = false;
-          }, 4000);
+          }, { once: true });
         } else {
           errorDiv.style.display = 'block';
           btn.textContent = 'Send enquiry →';
