@@ -513,6 +513,7 @@
         size: A4;
         margin: 22mm 20mm 22mm 20mm;
       }
+      @page :last { margin-bottom: 0; }
 
       /* Reset to print-friendly palette */
       :root {
@@ -534,69 +535,121 @@
         background: #fff !important;
         color: #0D0D0F !important;
         font-size: 11pt;
-        line-height: 1.75;
+        line-height: 1.7;
+        orphans: 3;
+        widows: 3;
       }
 
-      #view-thesis { display: block !important; }
+      #view-thesis {
+        display: block !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+      }
 
-      .wrap { max-width: 100%; padding: 0; }
+      .wrap { max-width: 100%; padding: 0; margin-bottom: 0; }
 
-      /* Title page feel */
-      .essay-header { padding-top: 0; padding-bottom: 4rem; border-bottom: 1px solid #c9b06a; }
+      /* Title block */
+      .essay-header {
+        padding-top: 0;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid #c9b06a;
+        margin-bottom: 0;
+      }
       .essay-label { color: #9A7830 !important; font-size: 7pt; letter-spacing: 0.3em; }
-      .essay-title { font-size: 28pt !important; color: #0D0D0F !important; line-height: 1.1; }
+      .essay-title { font-size: 26pt !important; color: #0D0D0F !important; line-height: 1.1; margin-bottom: 1.5rem; }
       .essay-title em { color: #9A7830 !important; }
-      .essay-meta { border-top: 1px solid rgba(154,120,48,0.3); margin-top: 2rem; padding-top: 1.5rem; }
+      .essay-meta { border-top: 1px solid rgba(154,120,48,0.3); margin-top: 1.5rem; padding-top: 1rem; }
       .essay-meta-item { color: #4A4A52 !important; font-size: 9pt; }
       .essay-meta-item strong { color: #9A7830 !important; }
 
-      /* Intro */
+      /* Intro — keep together but allow text to flow naturally */
       .essay-intro {
-        font-size: 13pt !important; color: #0D0D0F !important;
+        font-size: 12pt !important;
+        color: #0D0D0F !important;
         border-left: 2px solid #9A7830 !important;
-        padding: 1.5rem 0 1.5rem 1.5rem !important;
-        margin: 3rem 0 !important;
+        padding: 1rem 0 1rem 1.25rem !important;
+        margin: 2rem 0 !important;
         break-inside: avoid;
       }
 
-      /* Sections */
-      .essay-section { border-top: 1px solid rgba(154,120,48,0.25) !important; padding: 3rem 0 !important; break-inside: avoid-page; }
+      /* Sections — only keep header with its first paragraph together */
+      .essay-section {
+        border-top: 1px solid rgba(154,120,48,0.25) !important;
+        padding: 1.5rem 0 !important;
+        margin-bottom: 0 !important;
+        break-inside: auto;
+      }
+      .section-header {
+        break-after: avoid;
+        margin-bottom: 1rem !important;
+      }
       .section-num { color: #9A7830 !important; font-size: 8pt; }
-      .section-title { color: #0D0D0F !important; font-size: 15pt !important; }
+      .section-title { color: #0D0D0F !important; font-size: 14pt !important; }
       .section-title em { color: #9A7830 !important; }
 
-      /* Body text */
-      .t-prose p { color: #333 !important; font-size: 11pt !important; margin-bottom: 1.2rem !important; }
+      /* Body text — let paragraphs flow freely across pages */
+      .t-prose { break-inside: auto; }
+      .t-prose p {
+        color: #333 !important;
+        font-size: 10.5pt !important;
+        margin-bottom: 0.9rem !important;
+        break-inside: auto;
+        orphans: 3;
+        widows: 3;
+      }
       .t-prose strong { color: #0D0D0F !important; }
 
-      /* Pull quotes */
-      .pull { border-left: 1px solid #9A7830 !important; break-inside: avoid; }
-      .pull p { color: #0D0D0F !important; font-size: 13pt !important; }
+      /* Pull quotes — keep together, reasonable size */
+      .pull {
+        border-left: 1px solid #9A7830 !important;
+        margin: 1.25rem 0 !important;
+        padding: 0.5rem 0 0.5rem 1.25rem !important;
+        break-inside: avoid;
+      }
+      .pull p { color: #0D0D0F !important; font-size: 12pt !important; margin: 0 !important; }
       .pull p em { color: #9A7830 !important; }
 
-      /* Callouts */
-      .callout { background: #F7F5F0 !important; border-left: 2px solid #9A7830 !important; break-inside: avoid; }
-      .callout-label { color: #9A7830 !important; }
-      .callout p { color: #333 !important; }
+      /* Callouts — keep together */
+      .callout {
+        background: #F7F5F0 !important;
+        border-left: 2px solid #9A7830 !important;
+        padding: 1rem 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        break-inside: avoid;
+      }
+      .callout-label { color: #9A7830 !important; font-size: 7pt; margin-bottom: 0.4rem !important; }
+      .callout p { color: #333 !important; font-size: 10pt !important; margin: 0 !important; }
       .callout p strong { color: #0D0D0F !important; }
 
-      /* Definition boxes */
-      .definition { border: 1px solid rgba(154,120,48,0.3) !important; break-inside: avoid; background: #FAFAF8 !important; }
-      .definition-term { color: #0D0D0F !important; }
+      /* Definition boxes — keep together */
+      .definition {
+        border: 1px solid rgba(154,120,48,0.3) !important;
+        background: #FAFAF8 !important;
+        padding: 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        break-inside: avoid;
+      }
+      .definition-term { color: #0D0D0F !important; font-size: 11pt; margin-bottom: 0.5rem !important; }
       .definition-term span { color: #9A7830 !important; }
-      .definition p { color: #4A4A52 !important; }
+      .definition p { color: #4A4A52 !important; font-size: 10pt !important; margin: 0 !important; }
 
-      /* Stat grid */
-      .stat-grid { background: rgba(154,120,48,0.12) !important; border: 1px solid rgba(154,120,48,0.25) !important; break-inside: avoid; }
-      .stat-cell { background: #fff !important; }
-      .stat-number { color: #9A7830 !important; }
-      .stat-label { color: #4A4A52 !important; }
+      /* Stat grid — keep together */
+      .stat-grid {
+        background: transparent !important;
+        border: 1px solid rgba(154,120,48,0.25) !important;
+        margin: 1.25rem 0 !important;
+        gap: 1px !important;
+        break-inside: avoid;
+      }
+      .stat-cell { background: #fff !important; padding: 1rem !important; }
+      .stat-number { color: #9A7830 !important; font-size: 18pt !important; margin-bottom: 0.25rem !important; }
+      .stat-label { color: #4A4A52 !important; font-size: 8pt !important; }
 
       /* Remove animations */
       .fade { opacity: 1 !important; transform: none !important; }
 
-      /* Footer watermark */
-      #view-thesis::after {
+      /* Inline watermark — avoids blank last page caused by ::after */
+      .essay-body::after {
         content: 'JusticeReserve · Capital · Technology · Justice · justicereserve.com';
         display: block;
         font-family: 'DM Mono', monospace;
@@ -604,9 +657,9 @@
         letter-spacing: 0.2em;
         color: #9A7830;
         text-align: center;
-        padding-top: 3rem;
+        padding-top: 2rem;
         border-top: 1px solid rgba(154,120,48,0.25);
-        margin-top: 4rem;
+        margin-top: 3rem;
       }
     }
   </style>
