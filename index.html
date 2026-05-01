@@ -10,16 +10,15 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:     #EDE8DE;
-      --navy:   #0D2240;
+      --bg:     #0D0D0F;
+      --navy:   #1A1F1C;
       --gold:   #C5A059;
       --gold2:  #B8945A;
-      --white:  #0D2240;
-      --light:  #F5F0EB;
-      --muted:  #4A6275;
-      --card:   #0D2240;
+      --white:  #F5F5F0;
+      --muted:  #8A9190;
+      --card:   #131814;
       --border: rgba(197,160,89,0.18);
-      --rule:   rgba(197,160,89,0.28);
+      --rule:   rgba(197,160,89,0.25);
     }
     html { scroll-behavior: smooth; }
     body {
@@ -53,12 +52,12 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.25rem 5vw;
-      background: rgba(13,34,64,0.95);
+      background: rgba(13,13,15,0.90);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.4s;
     }
-    nav.scrolled { border-color: rgba(197,160,89,0.25); }
+    nav.scrolled { border-color: var(--border); }
     .logo-wrap {
       display: flex; align-items: center; gap: 0.85rem;
       background: none; border: none; cursor: pointer; padding: 0;
@@ -69,24 +68,24 @@
       font-family: 'DM Mono', monospace;
       font-size: 0.72rem; font-weight: 400;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--light); line-height: 1.35;
+      color: var(--white); line-height: 1.35;
     }
     .logo-text span { color: var(--gold); }
     .nav-menu { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
     .nav-btn {
       background: none; border: none; padding: 0; cursor: pointer;
       font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
-      letter-spacing: 0.06em; color: rgba(245,240,235,0.55); transition: color 0.2s;
+      letter-spacing: 0.06em; color: var(--muted); transition: color 0.2s;
     }
-    .nav-btn:hover { color: var(--light); }
+    .nav-btn:hover { color: var(--white); }
     .nav-cta .nav-btn { color: var(--gold); border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
-    .nav-cta .nav-btn:hover { color: var(--light); border-color: var(--light); }
+    .nav-cta .nav-btn:hover { color: var(--white); border-color: var(--white); }
     .menu-toggle {
       display: none; background: none; border: none;
       cursor: pointer; padding: 4px; flex-direction: column; gap: 5px;
     }
     .menu-toggle span {
-      display: block; width: 22px; height: 1px; background: var(--light);
+      display: block; width: 22px; height: 1px; background: var(--white);
       transition: transform 0.3s, opacity 0.3s;
     }
     .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -104,7 +103,7 @@
       }
       .nav-menu.open { display: flex; }
       .nav-menu li { width: 100%; border-top: 1px solid var(--border); }
-      .nav-menu .nav-btn { display: block; padding: 1rem 5vw; width: 100%; text-align: left; color: rgba(245,240,235,0.65); }
+      .nav-menu .nav-btn { display: block; padding: 1rem 5vw; width: 100%; text-align: left; }
       .nav-cta .nav-btn { border-bottom: none; }
     }
 
@@ -135,7 +134,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(3rem, 6vw, 5.5rem);
       font-weight: 300; line-height: 1.06;
-      letter-spacing: -0.01em; color: var(--navy);
+      letter-spacing: -0.01em; color: var(--white);
       margin-bottom: 2rem;
     }
     .hero h1 em { font-style: italic; color: var(--gold); }
@@ -171,7 +170,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 60%, rgba(210,200,188,0.25) 100%);
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(9,9,11,0.45) 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -181,7 +180,7 @@
     .case-heading {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300; line-height: 1.1; color: var(--navy); margin-bottom: 2rem;
+      font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 2rem;
     }
     .case-heading em { font-style: italic; color: var(--gold); }
     .bq {
@@ -191,11 +190,11 @@
     .bq p {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.3rem, 2.2vw, 1.75rem);
-      font-weight: 300; font-style: italic; line-height: 1.45; color: var(--navy);
+      font-weight: 300; font-style: italic; line-height: 1.45; color: var(--white);
     }
     .bq p em { color: var(--gold); font-style: normal; }
     .prose-p { font-size: 0.93rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.5rem; }
-    .prose-p strong { color: var(--navy); font-weight: 400; }
+    .prose-p strong { color: var(--white); font-weight: 400; }
     .prose-p:last-child { margin-bottom: 0; }
 
     /* THESIS SECTION (home) */
@@ -223,7 +222,7 @@
     }
     .step-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-weight: 400; color: var(--navy);
+      font-size: 1.1rem; font-weight: 400; color: var(--white);
       margin-bottom: 0.6rem; line-height: 1.3;
     }
     .step-text { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
@@ -237,11 +236,11 @@
     .contact-form input, .contact-form textarea {
       background: var(--card); border: none; outline: none;
       font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 300;
-      color: var(--light); padding: 1rem 1.25rem; resize: none; width: 100%;
+      color: var(--white); padding: 1rem 1.25rem; resize: none; width: 100%;
       transition: background 0.2s;
     }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(245,240,235,0.4); }
-    .contact-form input:focus, .contact-form textarea:focus { background: #0a1a30; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted); opacity: 0.55; }
+    .contact-form input:focus, .contact-form textarea:focus { background: #141a17; }
     .contact-form textarea { height: 110px; }
     .submit-btn {
       background: none; border: 1px solid var(--gold); color: var(--gold);
@@ -269,7 +268,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.4rem, 4.5vw, 4rem);
       font-weight: 300; line-height: 1.08; letter-spacing: -0.01em;
-      color: var(--navy); margin-bottom: 2rem;
+      color: var(--white); margin-bottom: 2rem;
     }
     .essay-title em { font-style: italic; color: var(--gold); }
     .essay-meta {
@@ -286,7 +285,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.2rem, 2.2vw, 1.55rem);
       font-weight: 300; font-style: italic; line-height: 1.55;
-      color: var(--navy); margin: 4rem 0; padding: 0 0 0 1.5rem;
+      color: var(--white); margin: 4rem 0; padding: 0 0 0 1.5rem;
       border-left: 1px solid var(--gold);
     }
     .essay-body { padding-bottom: 8rem; }
@@ -303,19 +302,19 @@
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 300; line-height: 1.2; color: var(--navy);
+      font-weight: 300; line-height: 1.2; color: var(--white);
     }
     .section-title em { font-style: italic; color: var(--gold); }
     .t-prose p { color: var(--muted); font-size: 0.93rem; margin-bottom: 1.6rem; line-height: 1.85; }
     .t-prose p:last-child { margin-bottom: 0; }
-    .t-prose strong { color: var(--navy); font-weight: 400; }
+    .t-prose strong { color: var(--white); font-weight: 400; }
     .t-prose em { font-style: italic; }
     .pull { margin: 3.5rem 0; padding-left: 1.5rem; border-left: 1px solid var(--gold); }
     .pull p {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.2rem, 2vw, 1.6rem);
       font-weight: 300; font-style: italic; line-height: 1.45;
-      color: var(--navy); margin-bottom: 0 !important;
+      color: var(--white); margin-bottom: 0 !important;
     }
     .pull p em { color: var(--gold); font-style: normal; }
     .callout {
@@ -326,13 +325,13 @@
       font-family: 'DM Mono', monospace; font-size: 0.64rem; font-weight: 400;
       letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
     }
-    .callout p { font-size: 0.88rem; color: rgba(245,240,235,0.65); line-height: 1.75; margin-bottom: 0; }
-    .callout p strong { color: var(--light); font-weight: 400; }
+    .callout p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 0; }
+    .callout p strong { color: var(--white); font-weight: 400; }
     .definition { margin: 3rem 0; padding: 2rem; border: 1px solid var(--border); }
     .definition-term {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem; font-weight: 400; letter-spacing: 0.04em;
-      color: var(--navy); margin-bottom: 0.75rem;
+      color: var(--white); margin-bottom: 0.75rem;
     }
     .definition-term span { color: var(--gold); font-style: italic; }
     .definition p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 0; }
@@ -346,12 +345,12 @@
       font-size: clamp(1.8rem, 3vw, 2.4rem);
       font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.5rem;
     }
-    .stat-label { font-size: 0.8rem; color: rgba(245,240,235,0.6); line-height: 1.5; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
     .essay-cta { padding: 6rem 0; border-top: 1px solid var(--border); text-align: center; }
     .essay-cta p {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.2rem, 2vw, 1.55rem);
-      font-weight: 300; font-style: italic; color: var(--navy);
+      font-weight: 300; font-style: italic; color: var(--white);
       margin-bottom: 2.5rem; line-height: 1.5;
     }
     .back-btn {
@@ -371,7 +370,7 @@
     .about-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-      font-weight: 300; color: var(--navy); line-height: 1.2; margin-bottom: 0.5rem;
+      font-weight: 300; color: var(--white); line-height: 1.2; margin-bottom: 0.5rem;
     }
     .about-role {
       font-family: 'DM Mono', monospace; font-size: 0.64rem;
@@ -385,7 +384,7 @@
     .about-bio { border-top: 1px solid var(--border); padding-top: 2rem; }
     .about-bio p { font-size: 0.93rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.4rem; }
     .about-bio p:last-child { margin-bottom: 0; }
-    .about-bio strong { color: var(--navy); font-weight: 400; }
+    .about-bio strong { color: var(--white); font-weight: 400; }
     .linkedin-btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       margin-top: 1.5rem;
@@ -416,32 +415,32 @@
     [data-fs-submit-btn]:disabled  { opacity: 0.45; cursor: not-allowed; }
 
     /* FOOTER */
-    footer { background: #112244; border-top: none; padding: 4rem 5vw 3rem; }
+    footer { border-top: 1px solid var(--border); padding: 4rem 5vw 3rem; }
     .footer-inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; }
     .footer-top { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
     .footer-brand {
       font-family: 'DM Mono', monospace; font-size: 0.72rem;
-      letter-spacing: 0.22em; text-transform: uppercase; color: var(--light);
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--white);
     }
     .footer-brand span { color: var(--gold); }
     .footer-tagline {
       font-family: 'DM Mono', monospace; font-size: 0.65rem;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,240,235,0.45); opacity: 1;
+      color: var(--muted); opacity: 0.6;
     }
     .footer-bottom {
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 1rem;
-      border-top: 1px solid rgba(197,160,89,0.18); padding-top: 2rem;
+      border-top: 1px solid var(--border); padding-top: 2rem;
     }
     .footer-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
     .footer-link {
       font-family: 'DM Mono', monospace; font-size: 0.72rem;
-      letter-spacing: 0.08em; color: rgba(245,240,235,0.5); text-decoration: none;
+      letter-spacing: 0.08em; color: var(--muted); text-decoration: none;
       background: none; border: none; cursor: pointer; transition: color 0.2s;
     }
     .footer-link:hover { color: var(--gold); }
-    .footer-copy { font-size: 0.72rem; color: rgba(245,240,235,0.28); letter-spacing: 0.04em; }
+    .footer-copy { font-size: 0.72rem; color: var(--muted); opacity: 0.45; letter-spacing: 0.04em; }
     .footer-modal-btn { background: none; border: none; cursor: pointer; padding: 0; }
 
     /* MODAL */
@@ -473,10 +472,10 @@
       font-family: 'DM Mono', monospace; font-size: 0.64rem; font-weight: 400;
       letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
     }
-    .modal-body { font-size: 0.88rem; color: rgba(245,240,235,0.65); line-height: 1.8; }
+    .modal-body { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
     .modal-body p { margin-bottom: 1rem; }
     .modal-body p:last-child { margin-bottom: 0; }
-    .modal-body strong { color: var(--light); font-weight: 400; }
+    .modal-body strong { color: var(--white); font-weight: 400; }
     @media (max-width: 680px) {
       .modal { padding: 2rem 1.5rem; }
       .modal-body { line-height: 1.55; }
@@ -495,128 +494,6 @@
       .footer-top { flex-direction: column; align-items: flex-start; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
-    /* JR PAPERS */
-    .papers-header {
-      padding-top: 8rem; padding-bottom: 5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .papers-header-inner { max-width: 1100px; margin: 0 auto; padding: 0 5vw; }
-    .papers-eyebrow {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-family: 'DM Mono', monospace; font-size: 0.66rem;
-      letter-spacing: 0.5em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 2rem;
-    }
-    .papers-h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 6vw, 5.5rem);
-      font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
-      color: var(--navy); max-width: 900px;
-    }
-    .papers-h1 em { font-style: italic; color: var(--gold); }
-    .papers-list { max-width: 1100px; margin: 0 auto; padding: 0 5vw; }
-    .papers-issue {
-      display: grid; grid-template-columns: 9rem 1fr 18rem;
-      gap: 2rem; align-items: start;
-      padding: 5rem 0; border-top: 1px solid var(--border);
-    }
-    .papers-issue:first-child { border-top: none; }
-    .papers-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 7vw, 7rem);
-      font-weight: 300; line-height: 1;
-      color: rgba(197,160,89,0.12);
-      transition: color 0.35s;
-    }
-    .papers-issue:hover .papers-num { color: rgba(197,160,89,0.3); }
-    .papers-meta {
-      display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
-      font-family: 'DM Mono', monospace; font-size: 0.62rem;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.25rem;
-    }
-    .papers-meta-sep { color: rgba(13,34,64,0.2); }
-    .papers-meta-author { color: rgba(13,34,64,0.5); }
-    .papers-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.75rem, 3vw, 2.6rem);
-      font-weight: 300; line-height: 1.1;
-      color: var(--navy); margin-bottom: 1rem;
-      transition: transform 0.45s;
-    }
-    .papers-issue:hover .papers-title { transform: translateX(6px); }
-    .papers-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; font-weight: 300; font-style: italic;
-      color: var(--muted); margin-bottom: 2rem; line-height: 1.5;
-    }
-    .papers-read-btn {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-family: 'DM Mono', monospace; font-size: 0.68rem;
-      letter-spacing: 0.35em; text-transform: uppercase;
-      color: var(--navy); background: none; border: none;
-      border-bottom: 1px solid rgba(197,160,89,0.45); padding-bottom: 3px;
-      cursor: pointer; transition: color 0.2s, border-color 0.2s;
-    }
-    .papers-read-btn:hover { color: var(--gold); border-color: var(--gold); }
-    .papers-visual {
-      aspect-ratio: 3 / 4;
-      border: 1px solid var(--border);
-      background: rgba(13,34,64,0.04);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .papers-visual-text {
-      font-family: 'DM Mono', monospace; font-size: 0.6rem;
-      letter-spacing: 1em; color: rgba(13,34,64,0.1);
-      text-transform: uppercase; writing-mode: vertical-rl;
-    }
-    .papers-subscribe {
-      background: rgba(13,34,64,0.04);
-      border-top: 1px solid rgba(13,34,64,0.1);
-      padding: 8rem 5vw; text-align: center; margin-top: 5rem;
-    }
-    .papers-subscribe-icon { color: var(--gold); margin-bottom: 2rem; }
-    .papers-subscribe h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 300;
-      color: var(--navy); margin-bottom: 1.25rem;
-    }
-    .papers-subscribe p {
-      font-size: 0.88rem; color: var(--muted); margin-bottom: 2.5rem;
-    }
-    .papers-subscribe-form {
-      display: flex; flex-direction: row; gap: 0;
-      max-width: 480px; margin: 0 auto;
-    }
-    .papers-subscribe-form input {
-      flex: 1; background: transparent; border: 1px solid rgba(13,34,64,0.25);
-      border-right: none; padding: 1rem 1.25rem;
-      font-family: 'DM Mono', monospace; font-size: 0.72rem;
-      letter-spacing: 0.18em; color: var(--navy); outline: none;
-      transition: border-color 0.2s;
-    }
-    .papers-subscribe-form input::placeholder { color: var(--muted); opacity: 0.6; }
-    .papers-subscribe-form input:focus { border-color: var(--gold); }
-    .papers-subscribe-form button {
-      background: var(--gold); color: var(--bg);
-      border: none; padding: 1rem 1.75rem;
-      font-family: 'DM Mono', monospace; font-size: 0.72rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      font-weight: 400; cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .papers-subscribe-form button:hover { background: var(--navy); }
-    @media (max-width: 860px) {
-      .papers-issue { grid-template-columns: 6rem 1fr; }
-      .papers-visual { display: none; }
-    }
-    @media (max-width: 560px) {
-      .papers-issue { grid-template-columns: 4rem 1fr; gap: 1rem; padding: 3.5rem 0; }
-      .papers-subscribe-form { flex-direction: column; }
-      .papers-subscribe-form input { border-right: 1px solid rgba(13,34,64,0.2); border-bottom: none; }
-    }
-
     /* DOWNLOAD PDF BUTTON */
     .thesis-download-btn {
       display: inline-flex; align-items: center; gap: 0.6rem;
@@ -649,19 +526,10 @@
         --rule: rgba(154,120,48,0.35);
       }
 
-      /* Hide everything except the active essay view */
+      /* Hide everything except the thesis */
       body::before, .hero::after { display: none !important; }
-      nav, #view-home, #view-papers, #view-thesis, #view-paper-01, #view-paper-02, #view-paper-03, footer, .modal-overlay,
+      nav, #view-home, footer, .modal-overlay,
       .breadcrumb, .thesis-download-btn, .essay-cta { display: none !important; }
-
-      #view-thesis.active,
-      #view-paper-01.active,
-      #view-paper-02.active,
-      #view-paper-03.active {
-        display: block !important;
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-      }
 
       body {
         background: #fff !important;
@@ -670,6 +538,12 @@
         line-height: 1.7;
         orphans: 3;
         widows: 3;
+      }
+
+      #view-thesis {
+        display: block !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
       }
 
       .wrap { max-width: 100%; padding: 0; margin-bottom: 0; }
@@ -803,7 +677,6 @@
       <li><button class="nav-btn" data-target="thesis">The Thesis</button></li>
       <li><button class="nav-btn" data-target="model">The Model</button></li>
       <li><button class="nav-btn" data-target="about">About</button></li>
-      <li><button class="nav-btn" id="nav-papers-btn">JR Papers</button></li>
       <li class="nav-cta"><button class="nav-btn" data-target="contact">Engage →</button></li>
     </ul>
     <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
@@ -930,19 +803,6 @@
             <p>JusticeReserve is the institutional expression of that belief — not a temporary programme, but permanent infrastructure. By harnessing the same technological forces reshaping global economies, JusticeReserve aims to build the infrastructure that delivers access to justice at scale, in perpetuity.</p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <hr />
-
-    <!-- JR PAPERS TEASER -->
-    <div class="wrap">
-      <div class="section" id="papers-teaser">
-        <div class="label fade" style="display:flex;align-items:center;gap:0.6rem;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          [JR PAPERS]
-        </div>
-        <button class="thesis-link-btn fade" id="nav-papers-btn-2">Browse the Papers →</button>
       </div>
     </div>
 
@@ -1092,270 +952,6 @@
     </div>
   </div><!-- /view-thesis -->
 
-  <!-- JR PAPERS VIEW -->
-  <div class="view" id="view-papers">
-    <!-- Editorial Header -->
-    <div class="papers-header">
-      <div class="papers-header-inner">
-        <div class="papers-eyebrow fade">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          The JR Papers
-        </div>
-        <h1 class="papers-h1 fade">Exploring the structural intersection of<br /><em>capital</em>, <em>technology</em> and <em>justice</em>.</h1>
-      </div>
-    </div>
-
-    <!-- Issue List -->
-    <div class="papers-list">
-
-      <div class="papers-issue fade">
-        <div class="papers-num">01</div>
-        <div>
-          <div class="papers-meta">
-            <span>March 2026</span>
-            <span class="papers-meta-sep">—</span>
-            <span class="papers-meta-author">Author: Michael Nketiah, Esq.</span>
-          </div>
-          <div class="papers-title">The Architecture of Asymmetry</div>
-          <p class="papers-subtitle">The Fallacy of Equal Justice in the Age of AI</p>
-          <button class="papers-read-btn" data-paper="01">
-            Read Issue
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-        <div class="papers-visual"><div class="papers-visual-text">JR Papers</div></div>
-      </div>
-
-      <div class="papers-issue fade">
-        <div class="papers-num">02</div>
-        <div>
-          <div class="papers-meta">
-            <span>April 2026</span>
-            <span class="papers-meta-sep">—</span>
-            <span class="papers-meta-author">Author: Michael Nketiah, Esq.</span>
-          </div>
-          <div class="papers-title">Capital as Infrastructure</div>
-          <p class="papers-subtitle">Why Human Rights Require Sovereign-Grade Endowments</p>
-          <button class="papers-read-btn" data-paper="02">
-            Read Issue
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-        <div class="papers-visual"><div class="papers-visual-text">JR Papers</div></div>
-      </div>
-
-      <div class="papers-issue fade">
-        <div class="papers-num">03</div>
-        <div>
-          <div class="papers-meta">
-            <span>May 2026</span>
-            <span class="papers-meta-sep">—</span>
-            <span class="papers-meta-author">Author: Michael Nketiah, Esq.</span>
-          </div>
-          <div class="papers-title">The Intelligence Harvest</div>
-          <p class="papers-subtitle">Leveraging Bittensor Yield for Public Defense</p>
-          <button class="papers-read-btn" data-paper="03">
-            Read Issue
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </div>
-        <div class="papers-visual"><div class="papers-visual-text">JR Papers</div></div>
-      </div>
-
-    </div><!-- /papers-list -->
-
-    <!-- Subscribe -->
-    <div class="papers-subscribe">
-      <div class="papers-subscribe-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      </div>
-      <h3 class="fade">Subscribe to the Papers</h3>
-      <p class="fade">Receive the latest installments of JR Papers.</p>
-      <div class="papers-subscribe-form fade">
-        <input type="email" placeholder="YOUR EMAIL" />
-        <button type="button">Join</button>
-      </div>
-    </div>
-
-  </div><!-- /view-papers -->
-
-  <!-- PAPER 01 VIEW -->
-  <div class="view" id="view-paper-01">
-    <div class="breadcrumb">
-      <button class="breadcrumb-btn paper-back-btn">← JR Papers</button>
-    </div>
-    <div class="wrap">
-      <div class="essay-header">
-        <div class="essay-label fade">[JR PAPERS — ISSUE 01]</div>
-        <h1 class="essay-title fade">The Architecture<br />of <em>Asymmetry</em></h1>
-        <div class="essay-meta fade">
-          <div class="essay-meta-item"><strong>Subtitle</strong>The Fallacy of Equal Justice in the Age of AI</div>
-          <div class="essay-meta-item"><strong>Author</strong>Michael Nketiah, Esq.</div>
-          <div class="essay-meta-item"><strong>Published</strong>March 2026</div>
-        </div>
-        <button class="thesis-download-btn fade" onclick="window.print()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
-        </button>
-      </div>
-    </div>
-    <hr />
-    <div class="wrap">
-      <div class="essay-intro fade">The principle of equal justice before the law is one of the most enduring fictions of the modern state. It is not a lie told with malice — it is a structural failure reproduced at scale. When artificial intelligence accelerates every asymmetry already embedded in the justice system, that fiction becomes a catastrophe.</div>
-    </div>
-    <div class="wrap">
-      <div class="essay-body">
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">I</div><h2 class="section-title">The Premise of Equality</h2></div>
-          <div class="t-prose fade">
-            <p>Every modern constitution guarantees some form of equality before the law. Ghana's Article 17 is explicit: all persons are equal before the law. The 1992 Constitution entrenches the right to a fair trial, the right to legal representation, and the presumption of innocence. These are not aspirational provisions. They are enforceable rights.</p>
-            <p>Yet the daily operation of Ghana's courts tells a different story. Defendants without legal representation routinely plead guilty to offences they did not commit, simply because they do not understand the charges. Individuals in pretrial detention waive constitutional rights they are unaware they possess. The formal architecture of equality rests on a factual foundation that does not exist: the assumption that both parties to a legal proceeding have meaningful access to legal knowledge and representation.</p>
-          </div>
-          <div class="pull fade"><p>Equality before the law is not a legal guarantee. It is an <em>economic one.</em> And it has always been priced out of reach.</p></div>
-        </div>
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">II</div><h2 class="section-title">How AI Compounds the Asymmetry</h2></div>
-          <div class="t-prose fade">
-            <p>Artificial intelligence is being deployed across every dimension of the justice system: predictive policing, bail risk assessment, case management, sentencing guidance, and legal research. In each domain, the deployment follows a consistent pattern. The technology is built, trained, and primarily accessible to institutions — police forces, prosecution services, courts, and well-resourced private law firms. The individual defendant, particularly the indigent one, interacts with AI-enhanced systems without any corresponding AI-enhanced defence.</p>
-            <p>This is not a marginal imbalance. It is a structural reconfiguration of the adversarial system. The adversarial model of justice presupposes rough parity between contending parties — a parity that was already fictional for unrepresented defendants and that AI deployment has made entirely untenable. <strong>When one side of a legal dispute commands algorithmic intelligence and the other commands nothing, the outcome is not uncertain. It is predetermined.</strong></p>
-          </div>
-          <div class="callout fade">
-            <div class="callout-label">The Core Asymmetry</div>
-            <p>AI tools available to prosecution and courts: predictive risk scoring, case outcome modelling, automated disclosure analysis. AI tools available to the unrepresented defendant: <strong>none.</strong> This is not a technology gap. It is a justice gap expressed in technological terms.</p>
-          </div>
-        </div>
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">III</div><h2 class="section-title">The Structural Response</h2></div>
-          <div class="t-prose fade">
-            <p>The appropriate response to structural asymmetry is not to condemn the technology. AI in the justice system, deployed equitably, could dramatically improve access — through automated legal research, document analysis, and case preparation support for underfunded public defenders. The problem is not artificial intelligence. The problem is the institutional and economic conditions that determine who benefits from it.</p>
-            <p>Addressing the architecture of asymmetry therefore requires addressing its economic root. Legal representation must be funded not by the goodwill of states or the charity of law firms, but by a capital structure that exists independently of both. JusticeReserve is built on this premise: that the only durable response to a structural problem is a structural solution, one that does not depend on the continued generosity of the powerful.</p>
-          </div>
-          <div class="pull fade"><p>The question is not whether AI will transform justice. It will. The question is whether that transformation will serve <em>everyone</em> — or only those who can afford it.</p></div>
-        </div>
-      </div>
-    </div>
-  </div><!-- /view-paper-01 -->
-
-  <!-- PAPER 02 VIEW -->
-  <div class="view" id="view-paper-02">
-    <div class="breadcrumb">
-      <button class="breadcrumb-btn paper-back-btn">← JR Papers</button>
-    </div>
-    <div class="wrap">
-      <div class="essay-header">
-        <div class="essay-label fade">[JR PAPERS — ISSUE 02]</div>
-        <h1 class="essay-title fade">Capital as<br /><em>Infrastructure</em></h1>
-        <div class="essay-meta fade">
-          <div class="essay-meta-item"><strong>Subtitle</strong>Why Human Rights Require Sovereign-Grade Endowments</div>
-          <div class="essay-meta-item"><strong>Author</strong>Michael Nketiah, Esq.</div>
-          <div class="essay-meta-item"><strong>Published</strong>April 2026</div>
-        </div>
-        <button class="thesis-download-btn fade" onclick="window.print()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
-        </button>
-      </div>
-    </div>
-    <hr />
-    <div class="wrap">
-      <div class="essay-intro fade">We do not fund roads through charity. We do not fund hospitals through donor goodwill that expires at the end of a grant cycle. We do not fund electricity grids on the condition that the political climate remains favourable. Infrastructure is funded through capital — permanent, protected, and structured to endure. Human rights are no different.</div>
-    </div>
-    <div class="wrap">
-      <div class="essay-body">
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">I</div><h2 class="section-title">The Category Error in Human Rights Funding</h2></div>
-          <div class="t-prose fade">
-            <p>The global human rights funding architecture has been built on a category error: the treatment of fundamental rights as charitable causes rather than infrastructure. This error has consequences that compound across decades. Charitable funding is discretionary. It is subject to donor priorities, reputational considerations, geopolitical relationships, and fiscal cycles. Infrastructure funding is structural. It is built into the architecture of states and institutions precisely because it cannot be left to discretion.</p>
-            <p>Access to legal representation is infrastructure. It is the mechanism by which all other rights are enforced. Without it, the right to liberty is advisory. The presumption of innocence is ornamental. The guarantee of fair trial is a form of words in a document that has no operational force. <strong>Every other human right depends, at the moment of its violation, on the existence of a functioning legal representation system.</strong></p>
-          </div>
-        </div>
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">II</div><h2 class="section-title">What Sovereign-Grade Means</h2></div>
-          <div class="t-prose fade">
-            <p>The term sovereign-grade endowment is used deliberately. Sovereign wealth funds represent the highest-durability capital structures in existence. Their defining features are constitutional or legislative protection of principal, independent governance, long-duration investment mandates, and yield deployment rules that are insulated from short-term political pressure. Norway's Government Pension Fund Global is the canonical example: a capital structure so well-designed that it functions across governments, across economic cycles, and across generations.</p>
-            <p>A human rights endowment requires the same characteristics. The principal must be constitutionally protected — not merely ring-fenced by policy, which can be reversed, but entrenched at the level of foundational law. The governance must be independent of the executive, to prevent the endowment from being captured by the same political forces it is designed to constrain. The investment mandate must be long-duration, reflecting the permanent nature of the obligation being funded.</p>
-          </div>
-          <div class="pull fade"><p>Permanence is not an aspiration. It is an <em>architectural requirement</em> — built into the structure from the first day, or not built at all.</p></div>
-        </div>
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">III</div><h2 class="section-title">The JusticeReserve Model</h2></div>
-          <div class="t-prose fade">
-            <p>JusticeReserve operationalises this argument through a three-layer capital structure. At the base, strategic positions in decentralised AI infrastructure — principally the Bittensor ecosystem — generate returns that are non-correlated with traditional asset classes and that compound as the intelligence economy expands. Those returns flow into a permanent endowment whose principal is preserved and whose governance is structured for independence. From the endowment, sustainable yield is deployed into legal representation — specifically the population in pretrial detention without access to counsel.</p>
-            <p>The model does not require political will to sustain. It does not require annual budget negotiations. It does not require continued donor interest. It requires, at the outset, sufficient capital formation and sound governance. After that, the structure does what infrastructure is designed to do: it works, regardless of who is in power, and regardless of whether anyone is being generous this year.</p>
-          </div>
-          <div class="callout fade">
-            <div class="callout-label">The Endowment Principle</div>
-            <p>Capital preserved. Yield deployed. Year after year. Case after case. This is not a programme. <strong>It is infrastructure for human dignity.</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!-- /view-paper-02 -->
-
-  <!-- PAPER 03 VIEW -->
-  <div class="view" id="view-paper-03">
-    <div class="breadcrumb">
-      <button class="breadcrumb-btn paper-back-btn">← JR Papers</button>
-    </div>
-    <div class="wrap">
-      <div class="essay-header">
-        <div class="essay-label fade">[JR PAPERS — ISSUE 03]</div>
-        <h1 class="essay-title fade">The Intelligence<br /><em>Harvest</em></h1>
-        <div class="essay-meta fade">
-          <div class="essay-meta-item"><strong>Subtitle</strong>Leveraging Bittensor Yield for Public Defense</div>
-          <div class="essay-meta-item"><strong>Author</strong>Michael Nketiah, Esq.</div>
-          <div class="essay-meta-item"><strong>Published</strong>May 2026</div>
-        </div>
-        <button class="thesis-download-btn fade" onclick="window.print()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
-        </button>
-      </div>
-    </div>
-    <hr />
-    <div class="wrap">
-      <div class="essay-intro fade">Bittensor is not, at its core, a cryptocurrency project. It is an attempt to build a decentralised market for machine intelligence — a protocol through which AI models compete, are evaluated, and are compensated in proportion to their contribution. Understanding what that means is prerequisite to understanding why it matters for public defence.</div>
-    </div>
-    <div class="wrap">
-      <div class="essay-body">
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">I</div><h2 class="section-title">The Architecture of Bittensor</h2></div>
-          <div class="t-prose fade">
-            <p>The Bittensor network operates through a system of specialised subnets, each focused on a distinct domain of machine intelligence — language modelling, image generation, data validation, financial prediction, and others. Within each subnet, miners (those contributing computational resources and AI models) compete to produce the most accurate, most useful outputs. Validators assess those outputs and assign weights accordingly. TAO, the network's native token, is distributed as a reward for validated contribution.</p>
-            <p>The economic logic is distinctive. Unlike proof-of-work mining, which rewards raw computational expenditure, Bittensor rewards the <em>quality</em> of intelligence produced. The network is, in effect, a market for cognitive output. As the demand for AI capability grows — and the evidence suggests it will grow at rates that compress decades of progress into years — the value of contributing to that market compounds.</p>
-          </div>
-          <div class="stat-grid fade">
-            <div class="stat-cell"><div class="stat-number">32+</div><div class="stat-label">Active subnets across the Bittensor ecosystem</div></div>
-            <div class="stat-cell"><div class="stat-number">Open</div><div class="stat-label">Permissionless participation — no institutional gatekeepers</div></div>
-            <div class="stat-cell"><div class="stat-number">∞</div><div class="stat-label">Compounding yield potential as intelligence economy expands</div></div>
-          </div>
-        </div>
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">II</div><h2 class="section-title">Participation Without Permission</h2></div>
-          <div class="t-prose fade">
-            <p>The most strategically significant feature of the Bittensor ecosystem, from JusticeReserve's perspective, is that it is permissionless. No institution controls admission. No government can exclude a participant. No incumbent can gate access to the network's yield. This is qualitatively different from the position of African institutions relative to centralised AI providers, where participation is subject to pricing decisions, terms of service, and geopolitical considerations that are entirely outside African control.</p>
-            <p>Permissionless infrastructure enables what we term <strong>participation without permission</strong>: the ability to acquire a stake in the intelligence economy on terms set by the protocol, not by the incumbent. This is the strategic opening that JusticeReserve exploits. By acquiring and managing TAO positions and validator stakes in subnets aligned with its investment thesis, JusticeReserve becomes not merely a user of AI infrastructure but a stakeholder in it — entitled to a proportionate share of the yield generated as the network grows.</p>
-          </div>
-          <div class="pull fade"><p>Africa cannot outbuild Silicon Valley. But it can <em>own a stake in the intelligence economy</em> — and harvest the yield in service of justice.</p></div>
-        </div>
-        <div class="essay-section">
-          <div class="section-header fade"><div class="section-num">III</div><h2 class="section-title">From Yield to Defence</h2></div>
-          <div class="t-prose fade">
-            <p>The yield generated by Bittensor participation is not the end of the chain. It is the beginning of it. JusticeReserve's deployment logic converts intelligence yield into legal capacity through a structured endowment mechanism: Bittensor returns flow into the permanent endowment, are converted into stable, yield-generating assets that preserve capital through market cycles, and generate a sustainable payout that funds qualified lawyers to represent clients in pretrial detention.</p>
-            <p>The elegance of the model lies in its self-reinforcing character. As the intelligence economy grows, Bittensor yield increases. As yield increases, the endowment grows. As the endowment grows, the sustainable payout increases. As the payout increases, more clients receive representation. The growth of artificial intelligence — the very force that threatens to widen the justice gap — becomes the mechanism by which that gap is permanently funded closed.</p>
-          </div>
-          <div class="callout fade">
-            <div class="callout-label">The Harvest Loop</div>
-            <p>Intelligence economy grows → Bittensor yield compounds → Endowment expands → Legal representation scales. <strong>The system that creates the problem funds the solution.</strong></p>
-          </div>
-          <div class="t-prose fade">
-            <p>This is not optimism. It is engineering. The structural conditions that make the justice gap worse over time are the same conditions that make JusticeReserve's capital base more valuable over time. The design aligns incentives in a way that no charitable model can replicate: the more urgent the problem becomes, the more resources exist to address it.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!-- /view-paper-03 -->
-
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
@@ -1367,10 +963,6 @@
         <div class="footer-links">
           <button class="footer-link footer-modal-btn" data-modal="disclaimer">Disclaimer</button>
           <button class="footer-link footer-modal-btn" data-modal="privacy">Privacy Policy</button>
-          <a class="footer-link" href="https://www.linkedin.com/company/justicereserve/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.4rem;text-decoration:none;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
         </div>
         <div class="footer-copy">© 2026 JusticeReserve. All rights reserved.</div>
       </div>
@@ -1392,28 +984,19 @@
     const menu = document.getElementById('nav-menu');
     const homeView = document.getElementById('view-home');
     const thesisView = document.getElementById('view-thesis');
-    const papersView = document.getElementById('view-papers');
-    const paperViews = ['01','02','03'].map(n => document.getElementById('view-paper-' + n));
-    const allViews = [homeView, thesisView, papersView, ...paperViews];
     const NAV_H = 70;
 
-    function hideAll() { allViews.forEach(v => v.classList.remove('active')); }
     function showHome() {
-      hideAll(); homeView.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' }); observeFades();
-    }
-    function showPapers() {
-      hideAll(); papersView.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' }); observeFades();
+      thesisView.classList.remove('active');
+      homeView.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      observeFades();
     }
     function showThesis() {
-      hideAll(); thesisView.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' }); observeFades();
-    }
-    function showPaper(num) {
-      hideAll();
-      document.getElementById('view-paper-' + num).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' }); observeFades();
+      homeView.classList.remove('active');
+      thesisView.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      observeFades();
     }
     function doScroll(id) {
       const el = document.getElementById(id);
@@ -1446,19 +1029,7 @@
     document.getElementById('read-thesis-btn').addEventListener('click', () => {
       showThesis(); toggle.classList.remove('open'); menu.classList.remove('open');
     });
-    document.getElementById('nav-papers-btn').addEventListener('click', () => {
-      showPapers(); toggle.classList.remove('open'); menu.classList.remove('open');
-    });
-    document.getElementById('nav-papers-btn-2').addEventListener('click', () => {
-      showPapers();
-    });
     document.getElementById('breadcrumb-btn').addEventListener('click', showHome);
-    document.querySelectorAll('.papers-read-btn').forEach(btn => {
-      btn.addEventListener('click', () => showPaper(btn.dataset.paper));
-    });
-    document.querySelectorAll('.paper-back-btn').forEach(btn => {
-      btn.addEventListener('click', showPapers);
-    });
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     toggle.addEventListener('click', () => {
       toggle.classList.toggle('open'); menu.classList.toggle('open');
