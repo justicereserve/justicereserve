@@ -141,6 +141,16 @@
     font-weight:500;
     color:var(--gold);
   }
+  .page[data-page="ethos"]{position:relative;}
+  .grain-overlay{
+    position:absolute;inset:0;
+    z-index:-1;
+    pointer-events:none;
+    opacity:0.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='120'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:120px 120px;
+  }
   .statement{
     font-size:clamp(20px,4vw,26px);
     line-height:1.45;
@@ -451,6 +461,7 @@
 <main>
 
   <section class="page active" data-page="ethos">
+    <div class="grain-overlay" aria-hidden="true"></div>
     <h1 class="hero-headline">Capital in service of<br><em>permanent justice.</em></h1>
     <p class="statement">JusticeReserve is an asset management firm with a constitutional mission.</p>
     <p class="statement">We deploy permanent capital into decentralized compute, tokenized real-world assets, and the agentic infrastructure where they converge, seeking long-term compounding returns and directing a portion of those returns into a permanent endowment that funds access to justice across Africa.</p>
