@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JusticeReserve Holdings</title>
+<title>JusticeReserve</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -130,12 +130,11 @@
 
   .hero-headline{
     font-family:'Cormorant Garamond', serif;
-    font-size:clamp(40px,10vw,64px);
+    font-size:clamp(36px,10vw,64px);
     line-height:1.08;
     font-weight:500;
     letter-spacing:0;
     margin:0 0 40px;
-    max-width:11ch;
   }
   .hero-headline em{
     font-style:italic;
@@ -147,7 +146,7 @@
     line-height:1.45;
     font-weight:400;
     margin:0 0 40px;
-    max-width:38ch;
+    max-width:55ch;
   }
   .tagline{
     font-size:clamp(30px,7vw,42px);
@@ -171,11 +170,10 @@
   @media (min-width:900px){
     :root{ --max:760px; }
     .hero-headline{
-      max-width:20ch;
       margin-bottom:52px;
     }
     .statement{
-      max-width:46ch;
+      max-width:62ch;
       margin-bottom:32px;
     }
     .thesis-link{margin-top:64px;}
@@ -390,7 +388,6 @@
   .linkedin-btn:hover{color:var(--gold);border-color:var(--gold);}
   @media (max-width:600px){
     .about-grid{grid-template-columns:1fr;gap:28px;}
-    .hero-headline{max-width:20ch;}
   }
 
   /* FOOTER (ported from earlier site design) */
@@ -454,7 +451,7 @@
 <main>
 
   <section class="page active" data-page="ethos">
-    <h1 class="hero-headline">Capital in service of <em>permanent justice.</em></h1>
+    <h1 class="hero-headline">Capital in service of<br><em>permanent justice.</em></h1>
     <p class="statement">JusticeReserve is an asset management firm with a constitutional mission.</p>
     <p class="statement">We deploy permanent capital into decentralized compute, tokenized real-world assets, and the agentic infrastructure where they converge, seeking long-term compounding returns and directing a portion of those returns into a permanent endowment that funds access to justice across Africa.</p>
     <p class="tagline">Justice <u>compounds</u>.</p>
