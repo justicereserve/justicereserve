@@ -168,6 +168,19 @@
   }
   .thesis-link:hover{color:var(--ink);border-color:var(--ink);}
 
+  @media (min-width:900px){
+    :root{ --max:760px; }
+    .hero-headline{
+      max-width:20ch;
+      margin-bottom:52px;
+    }
+    .statement{
+      max-width:46ch;
+      margin-bottom:32px;
+    }
+    .thesis-link{margin-top:64px;}
+  }
+
   .body-copy{
     font-size:18px;
     line-height:1.65;
@@ -377,6 +390,7 @@
   .linkedin-btn:hover{color:var(--gold);border-color:var(--gold);}
   @media (max-width:600px){
     .about-grid{grid-template-columns:1fr;gap:28px;}
+    .hero-headline{max-width:20ch;}
   }
 
   /* FOOTER (ported from earlier site design) */
