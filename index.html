@@ -444,6 +444,17 @@
     .about-grid{grid-template-columns:1fr;gap:28px;}
   }
 
+  /* wide layout — Investments page on desktop */
+  @media (min-width:900px){
+    body.wide-mode main,
+    body.wide-mode footer{max-width:1120px;}
+    body.wide-mode footer .footer-inner{max-width:none;}
+    body.wide-mode .page[data-page="investments"] .body-copy{max-width:64ch;}
+    body.wide-mode .legs{grid-template-columns:repeat(3,1fr);column-gap:56px;}
+    body.wide-mode .leg{border-bottom:1px solid var(--hairline);}
+    body.wide-mode .leg-desc{max-width:none;}
+  }
+
   /* FOOTER */
   footer{background:var(--obsidian);border-top:1px solid var(--hairline);padding:64px 24px 48px;}
   .footer-inner{max-width:640px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:28px;}
@@ -789,6 +800,7 @@
       else { b.removeAttribute('aria-current'); }
     });
     document.body.classList.toggle('reading-mode', pageName === 'thesis');
+    document.body.classList.toggle('wide-mode', pageName === 'investments');
     setMenu(false);
     window.scrollTo(0,0);
   }
