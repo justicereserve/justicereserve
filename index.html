@@ -307,6 +307,12 @@
     margin:36px 0 14px;
   }
   .disc-sub:first-child{margin-top:0;}
+  .disc ul{
+    margin:0 0 18px;padding-left:1.2em;max-width:60ch;
+    color:var(--ink-dim);font-size:15px;line-height:1.7;
+    font-family:'DM Mono', monospace;
+  }
+  .disc li{margin:0 0 6px;}
 
   footer{
     max-width:var(--max);
@@ -438,10 +444,9 @@
     .about-grid{grid-template-columns:1fr;gap:28px;}
   }
 
-  /* FOOTER (ported from earlier site design) */
+  /* FOOTER */
   footer{background:var(--obsidian);border-top:1px solid var(--hairline);padding:64px 24px 48px;}
-  .footer-inner{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:40px;}
-  .footer-top{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+  .footer-inner{max-width:640px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:28px;}
   .footer-brand{
     font-family:'DM Mono', monospace;font-size:11px;
     letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);
@@ -452,11 +457,7 @@
     letter-spacing:0.18em;text-transform:uppercase;
     color:var(--ink-dim);
   }
-  .footer-bottom{
-    display:flex;justify-content:space-between;align-items:center;
-    flex-wrap:wrap;gap:16px;
-    border-top:1px solid var(--hairline);padding-top:32px;
-  }
+  .footer-rule{width:220px;max-width:100%;height:0;border:0;border-top:1px solid var(--hairline);margin:8px 0;}
   .footer-links{display:flex;gap:32px;align-items:center;flex-wrap:wrap;}
   .footer-link{
     font-family:'DM Mono', monospace;font-size:11px;
@@ -465,10 +466,6 @@
   }
   .footer-link:hover{color:var(--gold);}
   .footer-copy{font-size:11px;color:rgba(236,231,219,0.28);letter-spacing:0.04em;}
-  @media (max-width:600px){
-    .footer-top{flex-direction:column;align-items:flex-start;}
-    .footer-bottom{flex-direction:column;align-items:flex-start;}
-  }
 </style>
 </head>
 <body>
@@ -493,6 +490,7 @@
   </div>
   <div class="navfoot">
     <button data-page="disclosures">Disclosures</button>
+    <button data-page="privacy">Privacy</button>
   </div>
 </nav>
 
@@ -508,24 +506,27 @@
 
   <section class="page" data-page="investments">
     <h1 class="page-title">Investments</h1>
-    <p class="body-copy" style="margin-bottom:32px;">Our investment focus spans three categories. The category is the thesis, not any single instrument.</p>
+    <p class="body-copy" style="margin-bottom:32px;">JusticeReserve invests exclusively for its own account, deploying permanent proprietary capital across decentralized AI infrastructure, real-world assets, and agentic rails. It does not manage capital or provide investment services for third parties.</p>
     <div class="legs">
       <div class="leg">
         <p class="leg-name">Decentralized AI Infrastructure</p>
         <p class="leg-ticker mono">THE INTELLIGENCE LAYER</p>
-        <p class="leg-desc">Open, permissionless networks for machine intelligence and compute. Channels the AI upside.</p>
+        <p class="leg-desc">Open, permissionless infrastructure for machine intelligence, compute, and decentralized AI. We seek exposure to the infrastructure through which intelligence is produced, distributed, and monetized.</p>
       </div>
       <div class="leg">
         <p class="leg-name">Real-World Assets</p>
         <p class="leg-ticker mono">THE OWNERSHIP LAYER</p>
-        <p class="leg-desc">Open infrastructure for bringing real-world value onchain. Channels the tokenized ownership upside.</p>
+        <p class="leg-desc">Infrastructure for bringing real-world value onchain and enabling programmable, transparent ownership. We seek exposure to the emerging architecture of tokenized ownership.</p>
       </div>
       <div class="leg">
         <p class="leg-name">Agentic Rails</p>
         <p class="leg-ticker mono">THE CONVERGENCE LAYER</p>
-        <p class="leg-desc">The intersection of the first two: the leg where they converge as agentic infrastructure matures.</p>
+        <p class="leg-desc">The convergence of intelligence and ownership: infrastructure through which increasingly autonomous agents interact with, transact across, and coordinate real-world and digital assets.</p>
       </div>
     </div>
+    <p class="disc-sub" style="margin-top:48px;">Investment Approach</p>
+    <p class="body-copy" style="margin-bottom:18px;">The category is the thesis, not any single instrument.</p>
+    <p class="body-copy">JusticeReserve may pursue exposure through different investment structures and instruments as appropriate to the opportunity, while maintaining a long-term, proprietary-capital approach.</p>
   </section>
 
   <section class="page" data-page="thesis">
@@ -665,7 +666,7 @@
       </div>
       <button class="submit-btn" type="submit">Send enquiry →</button>
       <div id="form-error" style="display:none;margin-top:1rem;color:#e07070;font-size:14px;font-family:'DM Mono',monospace;">Something went wrong. Please try again.</div>
-      <p style="margin-top:1.5rem;max-width:520px;font-size:12px;line-height:1.7;color:var(--ink-dim);">We use the details you submit only to respond to your enquiry. See the Privacy section under <a href="#" onclick="goTo('disclosures');return false;" style="color:inherit;border-bottom:1px solid var(--hairline);text-decoration:none;">Disclosures</a>.</p>
+      <p style="margin-top:1.5rem;max-width:520px;font-size:12px;line-height:1.7;color:var(--ink-dim);">We use the details you submit only to respond to your enquiry. See our <a href="#" onclick="goTo('privacy');return false;" style="color:inherit;border-bottom:1px solid var(--hairline);text-decoration:none;">Privacy</a> notice.</p>
     </form>
   </section>
 
@@ -673,29 +674,77 @@
     <h1 class="page-title">Disclosures</h1>
     <div class="disc">
       <p class="disc-sub">Legal &amp; Financial Advice</p>
-      <p>Nothing on this website constitutes legal or financial advice. JusticeReserve does not provide legal representation or advisory services of any kind, and no information here should be relied upon as such. Readers should seek independent legal and financial advice before making any decisions based on the content of this site.</p>
+      <p>Nothing on this website constitutes legal, financial, tax, investment, or other professional advice. JusticeReserve does not provide legal representation, investment advice, or other advisory services through this website. Visitors should obtain independent professional advice before making decisions based on information contained on this site.</p>
 
       <p class="disc-sub">Operational Note</p>
-      <p>The delivery of legal access services is contingent on the success and sustainability of JusticeReserve's investment activities. No representation is made as to timing, scale, or outcome. JusticeReserve makes no guarantee, express or implied, regarding the realisation of the social mission described on this site.</p>
+      <p>The pursuit of JusticeReserve’s social mission is contingent on the success and sustainability of its investment activities. No representation or guarantee is made as to the timing, scale, or outcome of that mission.</p>
 
       <p class="disc-sub">Private Initiative</p>
-      <p>JusticeReserve is a private initiative. It is not a government body, public authority, central bank, court, or judicial institution, and it has no affiliation with any of them. Its name describes its purpose and does not indicate any official status.</p>
+      <p>JusticeReserve is a private initiative. It is not a government body, public authority, central bank, court, or judicial institution, and has no affiliation with any of them. Its name describes its purpose and does not indicate any official status.</p>
 
       <p class="disc-sub">Investment Disclosures</p>
-      <p>JusticeReserve is a proprietary investment vehicle focused on infrastructure and assets associated with decentralized AI, tokenized real-world assets, and the agentic infrastructure where they converge, with a constitutional mission to support permanent access to justice across Africa.</p>
+      <p>JusticeReserve is a proprietary investment vehicle focused on infrastructure and assets associated with the emerging intelligence economy, with a constitutional mission to support permanent access to justice across Africa.</p>
       <p>JusticeReserve is not a licensed or authorised investment manager, fund manager, broker, investment adviser, or other regulated financial-services provider. No investment management, investment advisory, brokerage, or other regulated financial service is offered through this website.</p>
-      <p>Nothing on this site constitutes an offer to sell, or a solicitation of an offer to buy, any security, token, fund interest, or other investment product. Any future investment vehicle or offering associated with JusticeReserve will be established and offered separately and, where applicable, only in accordance with applicable laws and regulatory requirements.</p>
-      <p>References to investment strategies, sectors, tokens, assets, or other opportunities are illustrative of the categories in which JusticeReserve may invest and do not constitute investment recommendations or an offer to invest. There is no assurance that any investment objective will be achieved, and investments involve the risk of loss.</p>
-      <p>JusticeReserve's structure, jurisdictions, activities, and regulatory status may change over time. Nothing on this website is a representation that any fund, investment vehicle, or regulated activity has been established or authorised.</p>
-      <p>The content on this website reflects the views and plans of the project as of the date published and may change without notice. Visitors should obtain their own independent legal, tax, financial, and other professional advice before making decisions concerning matters discussed on this website.</p>
-
-      <p class="disc-sub">Privacy</p>
-      <p>If you submit the contact form, we collect the name, email address, organisation (if provided), and message you enter. We use these details only to respond to your enquiry and to keep a record of it. We do not sell personal data or use it for marketing without your consent.</p>
-      <p>Form submissions are processed on our behalf by Formspree, a third-party form service, and may be handled outside Ghana. This website also loads its typefaces from Google Fonts, which means your browser connects to Google's servers when the page loads. This website does not use analytics or advertising cookies.</p>
-      <p>You may ask us to confirm what personal data we hold about you, or to correct or delete it, by writing to us through the contact form and stating your request.</p>
+      <p>Nothing on this website constitutes an offer to sell, or a solicitation of an offer to buy, any security, token, fund interest, or other investment product.</p>
+      <p>References to investment strategies, sectors, tokens, assets, or other opportunities are illustrative of categories in which JusticeReserve may invest and do not constitute investment recommendations or an offer to invest. There is no assurance that any investment objective will be achieved, and investments involve the risk of loss.</p>
+      <p>JusticeReserve’s structure, jurisdictions, activities, and regulatory status may change over time. Nothing on this website represents that any fund, investment vehicle, or regulated activity has been established or authorised.</p>
 
       <p class="disc-sub">Last Updated</p>
       <p>September 2026.</p>
+      <p>JusticeReserve</p>
+    </div>
+  </section>
+
+  <section class="page" data-page="privacy">
+    <h1 class="page-title">Privacy</h1>
+    <div class="disc">
+      <p class="disc-sub">Overview</p>
+      <p>JusticeReserve respects your privacy and is committed to handling personal information responsibly. This Privacy Notice explains what personal information we collect through this website, how we use it, and the choices available to you.</p>
+
+      <p class="disc-sub">Information We Collect</p>
+      <p>If you contact JusticeReserve through the website, we may collect the information you choose to provide, including:</p>
+      <ul>
+        <li>your name;</li>
+        <li>your email address;</li>
+        <li>your organisation, if provided; and</li>
+        <li>the contents of your message or enquiry.</li>
+      </ul>
+      <p>We do not intentionally collect sensitive personal information through the website.</p>
+
+      <p class="disc-sub">How We Use Your Information</p>
+      <p>We use information submitted through the website to:</p>
+      <ul>
+        <li>respond to enquiries and communications;</li>
+        <li>maintain a record of correspondence; and</li>
+        <li>administer and protect the website.</li>
+      </ul>
+      <p>We do not sell personal information or use information submitted through the contact form for marketing purposes without your consent.</p>
+
+      <p class="disc-sub">Third-Party Services</p>
+      <p>Contact-form submissions are processed on our behalf by Formspree, a third-party form service. Information submitted through the form may therefore be processed or stored outside Ghana and may be subject to the privacy practices of that service.</p>
+      <p>The website also uses Google Fonts to display its typefaces. When the website loads these fonts, your browser may connect to Google’s servers and Google may receive technical information associated with that request.</p>
+      <p>You should review the privacy policies of these third-party providers for further information about their handling of personal information.</p>
+
+      <p class="disc-sub">Cookies and Analytics</p>
+      <p>This website does not use analytics or advertising cookies.</p>
+      <p>Where necessary for the technical operation, security, or functionality of the website, limited technical information may nevertheless be processed by the website or its hosting and service providers.</p>
+
+      <p class="disc-sub">Data Retention</p>
+      <p>We retain personal information only for as long as reasonably necessary to respond to enquiries, maintain appropriate records, comply with applicable legal obligations, or protect our legitimate interests.</p>
+
+      <p class="disc-sub">Your Rights</p>
+      <p>Subject to applicable law, you may request information about the personal data we hold about you and ask us to correct inaccurate information or delete personal information where appropriate.</p>
+      <p>To make a privacy-related request, contact JusticeReserve through the website's contact form and clearly state the nature of your request.</p>
+
+      <p class="disc-sub">Changes to This Notice</p>
+      <p>This Privacy Notice may be updated from time to time to reflect changes in the website, our practices, or applicable legal requirements. The date of the most recent update will appear below.</p>
+
+      <p class="disc-sub">Contact</p>
+      <p>For privacy-related enquiries or requests, please contact JusticeReserve through the contact form on this website.</p>
+
+      <p class="disc-sub">Last Updated</p>
+      <p>September 2026.</p>
+      <p>JusticeReserve</p>
     </div>
   </section>
 
@@ -703,20 +752,15 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">Justice<span>Reserve</span></div>
-      <div class="footer-tagline">Capital · Technology · Justice</div>
+    <div class="footer-brand">Justice<span>Reserve</span></div>
+    <div class="footer-tagline">Capital · Technology · Justice</div>
+    <hr class="footer-rule">
+    <div class="footer-links">
+      <a class="footer-link" href="#" data-page="disclosures">Disclosures</a>
+      <a class="footer-link" href="#" data-page="privacy">Privacy</a>
+      <a class="footer-link" href="https://www.linkedin.com/company/justicereserve/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-links">
-        <a class="footer-link" href="#" data-page="disclosures">Disclosures</a>
-        <a class="footer-link" href="https://www.linkedin.com/company/justicereserve/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.4rem;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-      </div>
-      <div class="footer-copy">&copy; 2026 JusticeReserve. All rights reserved.</div>
-    </div>
+    <div class="footer-copy">&copy; 2026 JusticeReserve. All rights reserved.</div>
   </div>
 </footer>
 
