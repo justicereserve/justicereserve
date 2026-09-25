@@ -795,7 +795,10 @@
     setMenu(!body.classList.contains('menu-open'));
   });
 
-  function goTo(pageName){
+  const validPages = Array.from(pages).map(p => p.dataset.page);
+
+  function goTo(pageName, updateHash = true){
+    if(!validPages.includes(pageName)) pageName = 'ethos';
     pages.forEach(p => p.classList.toggle('active', p.dataset.page === pageName));
     navButtons.forEach(b => {
       if(b.dataset.page === pageName){ b.setAttribute('aria-current','page'); }
@@ -806,6 +809,16 @@
     document.body.classList.toggle('ethos-mode', pageName === 'ethos');
     setMenu(false);
     window.scrollTo(0,0);
+    if(updateHash){
+      const hash = '#' + pageName;
+      if(window.location.hash !== hash){
+        try{
+          history.pushState({ page: pageName }, '', hash);
+        }catch(err){
+          window.location.hash = pageName;
+        }
+      }
+    }
   }
 
   navButtons.forEach(b => b.addEventListener('click', () => goTo(b.dataset.page)));
@@ -817,8 +830,22 @@
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo('ethos'); }
   });
 
-  // initial state
-  goTo('ethos');
+  // support browser back/forward and direct links with a #page hash
+  window.addEventListener('popstate', () => {
+    const pageName = window.location.hash.replace('#', '') || 'ethos';
+    goTo(pageName, false);
+  });
+
+  // initial state — honor a #page hash in the URL (e.g. shared/bookmarked links)
+  const initialPage = window.location.hash.replace('#', '') || 'ethos';
+  goTo(initialPage, false);
+  if(!window.location.hash){
+    try{
+      history.replaceState({ page: 'ethos' }, '', '#ethos');
+    }catch(err){
+      // ignore — some sandboxed preview environments block history writes
+    }
+  }
 
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape') setMenu(false);
