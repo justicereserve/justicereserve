@@ -810,12 +810,18 @@
     setMenu(false);
     window.scrollTo(0,0);
     if(updateHash){
-      const hash = '#' + pageName;
-      if(window.location.hash !== hash){
+      // keep the home page's URL bare — only give other pages a #hash
+      const base = window.location.pathname + window.location.search;
+      const wantsHash = pageName !== 'ethos';
+      const targetUrl = wantsHash ? base + '#' + pageName : base;
+      const alreadyThere = wantsHash
+        ? window.location.hash === '#' + pageName
+        : window.location.hash === '';
+      if(!alreadyThere){
         try{
-          history.pushState({ page: pageName }, '', hash);
+          history.pushState({ page: pageName }, '', targetUrl);
         }catch(err){
-          window.location.hash = pageName;
+          window.location.hash = wantsHash ? pageName : '';
         }
       }
     }
@@ -841,14 +847,21 @@
   // Hash takes priority since that's what our own links produce.
   const pathPage = window.location.pathname.replace(/^\/+|\/+$/g, '');
   const hashPage = window.location.hash.replace('#', '');
-  const initialPage = hashPage || pathPage || 'ethos';
+  const initialPage = validPages.includes(hashPage) ? hashPage
+    : validPages.includes(pathPage) ? pathPage
+    : 'ethos';
   goTo(initialPage, false);
-  if(!window.location.hash){
-    try{
-      history.replaceState({ page: initialPage }, '', '#' + (validPages.includes(initialPage) ? initialPage : 'ethos'));
-    }catch(err){
-      // ignore — some sandboxed preview environments block history writes
+  // normalize the address bar: bare URL for home, #page for everything else
+  try{
+    if(initialPage === 'ethos'){
+      if(window.location.hash){
+        history.replaceState({ page: 'ethos' }, '', window.location.pathname + window.location.search);
+      }
+    }else if(window.location.hash !== '#' + initialPage){
+      history.replaceState({ page: initialPage }, '', '#' + initialPage);
     }
+  }catch(err){
+    // ignore — some sandboxed preview environments block history writes
   }
 
   document.addEventListener('keydown', (e) => {
