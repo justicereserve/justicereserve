@@ -836,12 +836,16 @@
     goTo(pageName, false);
   });
 
-  // initial state — honor a #page hash in the URL (e.g. shared/bookmarked links)
-  const initialPage = window.location.hash.replace('#', '') || 'ethos';
+  // initial state — honor either a #page hash or a clean /page path
+  // (e.g. shared/bookmarked links, or someone typing the URL directly).
+  // Hash takes priority since that's what our own links produce.
+  const pathPage = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  const hashPage = window.location.hash.replace('#', '');
+  const initialPage = hashPage || pathPage || 'ethos';
   goTo(initialPage, false);
   if(!window.location.hash){
     try{
-      history.replaceState({ page: 'ethos' }, '', '#ethos');
+      history.replaceState({ page: initialPage }, '', '#' + (validPages.includes(initialPage) ? initialPage : 'ethos'));
     }catch(err){
       // ignore — some sandboxed preview environments block history writes
     }
